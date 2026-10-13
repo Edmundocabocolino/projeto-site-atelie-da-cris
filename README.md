@@ -1,13 +1,7 @@
-# 🍽️ Ateliê da Cris - Site de Receitas
+# 🍽️ Ateliê da Cris — Site de Receitas
 
 Aplicação web completa desenvolvida com **Django 5**, **HTML5**, **CSS3** e banco de dados **SQLite**.
-O projeto é um site de receitas com listagem, detalhes e sistema de categorias — desenvolvido como projeto prático de aprendizagem de desenvolvimento web com Python.
-
----
-
-## 🖥️ Telas do Projeto
-
-> Página inicial com listagem de receitas por categoria e pesquisa.
+O projeto é um site de receitas com listagem, detalhes e sistema de categorias.
 
 ---
 
@@ -29,7 +23,8 @@ O projeto é um site de receitas com listagem, detalhes e sistema de categorias 
 - ✅ Upload de imagem de capa para cada receita
 - ✅ Painel administrativo Django (`/admin`) para cadastro de receitas
 - ✅ Templates dinâmicos com herança (`{% extends %}`, `{% block %}`, `{% include %}`)
-- ✅ Arquivos estáticos organizados (`base_static/`)
+- ✅ Arquivos estáticos organizados com **WhiteNoise**
+- ✅ Pronto para deploy em produção (Railway, Render, etc.)
 
 ---
 
@@ -56,13 +51,13 @@ projeto-site-atelie-da-cris/
 │   ├── admin.py            # Registro no painel admin
 │   ├── templates/
 │   │   └── recipes/
-│   │       ├── page/       # Páginas completas (home, detalhe)
-│   │       └── partials/   # Componentes reutilizáveis (header, footer, recipe card)
+│   │       ├── page/       # Páginas completas
+│   │       └── partials/   # Componentes reutilizáveis
 │   └── migrations/
 │
 ├── utils/                  # Utilitários auxiliares
-│   └── recipes/factory.py
-│
+├── Procfile                # Configuração de deploy (gunicorn)
+├── runtime.txt             # Versão do Python
 ├── manage.py
 ├── requirements.txt
 └── .gitignore
@@ -72,12 +67,6 @@ projeto-site-atelie-da-cris/
 
 ## 🔧 Como Executar Localmente
 
-### Pré-requisitos
-- Python 3.10+
-- pip
-
-### Passo a passo
-
 ```bash
 # 1. Clone o repositório
 git clone https://github.com/Edmundocabocolino/projeto-site-atelie-da-cris.git
@@ -85,27 +74,24 @@ cd projeto-site-atelie-da-cris
 
 # 2. Crie e ative o ambiente virtual
 python -m venv venv
-# Windows:
-venv\Scripts\activate
-# Linux/Mac:
-source venv/bin/activate
+venv\Scripts\activate     # Windows
+# source venv/bin/activate  # Linux/Mac
 
 # 3. Instale as dependências
 pip install -r requirements.txt
 
-# 4. Aplique as migrações do banco de dados
+# 4. Aplique as migrações
 python manage.py migrate
 
 # 5. Crie um superusuário para acessar o admin
 python manage.py createsuperuser
 
-# 6. Inicie o servidor de desenvolvimento
+# 6. Inicie o servidor
 python manage.py runserver
 ```
 
-### 🌐 Acesse no navegador:
-- **Site:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-- **Painel Admin:** [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+- **Site:** http://127.0.0.1:8000/
+- **Admin:** http://127.0.0.1:8000/admin/
 
 ---
 
@@ -116,16 +102,16 @@ class Category(models.Model):
     name = models.CharField(max_length=65)
 
 class Recipe(models.Model):
-    title       = models.CharField(max_length=65)
-    description = models.CharField(max_length=165)
-    slug        = models.SlugField(unique=True)
+    title            = models.CharField(max_length=65)
+    description      = models.CharField(max_length=165)
+    slug             = models.SlugField(unique=True)
     preparation_step = models.TextField()
-    created_at  = models.DateTimeField(auto_now_add=True)
-    updated_at  = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField(default=False)
-    cover       = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/')
-    category    = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
-    author      = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    created_at       = models.DateTimeField(auto_now_add=True)
+    updated_at       = models.DateTimeField(auto_now=True)
+    is_published     = models.BooleanField(default=False)
+    cover            = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/')
+    category         = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    author           = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 ```
 
 ---
