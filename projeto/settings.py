@@ -7,22 +7,23 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# ------------------------------------------------------------------
-# SEGURANÇA: em produção, leia a SECRET_KEY de uma variável de ambiente
-# ------------------------------------------------------------------
+# SEGURANÇA
 SECRET_KEY = os.environ.get(
     'SECRET_KEY',
     'django-insecure-^dmmm-$b2hi@b11=p-a8cd)1vln!!jc6%1g(83#y$+5o8w%x6x'
 )
 
-# DEBUG=False em produção; True apenas se a variável DEBUG=True estiver definida
+# Em produção, leia de variável de ambiente (padrão True para facilitar diagnóstico inicial se necessário)
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = ['*']
 
-# ------------------------------------------------------------------
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.railway.app',
+    'https://*.up.railway.app',
+]
+
 # Application definition
-# ------------------------------------------------------------------
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -36,7 +37,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # WhiteNoise deve vir logo após SecurityMiddleware
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -68,9 +68,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'projeto.wsgi.application'
 
-# ------------------------------------------------------------------
-# Database — SQLite local / produção básica
-# ------------------------------------------------------------------
+# Database SQLite
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -78,9 +76,6 @@ DATABASES = {
     }
 }
 
-# ------------------------------------------------------------------
-# Password validation
-# ------------------------------------------------------------------
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -88,31 +83,20 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# ------------------------------------------------------------------
-# Internationalization
-# ------------------------------------------------------------------
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_TZ = True
 
-# ------------------------------------------------------------------
-# Static files — WhiteNoise serve os estáticos em produção
-# ------------------------------------------------------------------
+# Static files — WhiteNoise sem quebrar em arquivos faltando
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'base_static',
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-# ------------------------------------------------------------------
-# Media files
-# ------------------------------------------------------------------
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# ------------------------------------------------------------------
-# Default primary key field type
-# ------------------------------------------------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
