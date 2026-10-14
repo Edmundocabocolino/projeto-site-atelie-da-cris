@@ -1,22 +1,18 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-from utils.recipes.factory import make_recipe
+from django.shortcuts import render, get_object_or_404
 from recipes.models import Recipe
 
-
-from .models import Recipe
-
-# Create your views here.
 def home(request):
-    recipes = Recipe.objects.all().order_by('-id')
-    return render(request,'recipes/page/home.html',context={
-        'recipes':recipes,
+    recipes = Recipe.objects.filter(is_published=True).order_by('-id')
+    # Se ainda não houver publicadas, lista todas para visualização
+    if not recipes.exists():
+        recipes = Recipe.objects.all().order_by('-id')
+    return render(request, 'recipes/page/home.html', context={
+        'recipes': recipes,
     })
 
 def recipeviews(request, id):
-    return render(request, "recipes/page/recipe-views.html",context={
-        
+    recipe = get_object_or_404(Recipe, pk=id)
+    return render(request, 'recipes/page/recipeviews.html', context={
+        'recipe': recipe,
         'is_detail_page': True,
     })
-
-
