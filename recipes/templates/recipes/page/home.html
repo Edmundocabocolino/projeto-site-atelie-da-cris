@@ -1,12 +1,532 @@
 {% extends "global/base.html" %}
-{% block title %}home|{% endblock title %}
+{% load static %}
 
 {% block content %}
+<!-- Header / Navbar -->
+<header class="navbar" id="navbar">
+    <div class="container nav-container">
+        <a href="#home" class="brand">
+            <span class="brand-icon"><i class="fa-solid fa-heart"></i></span>
+            <span class="brand-text">Ateliê da Cris</span>
+        </a>
 
+        <nav class="nav-menu" id="nav-menu">
+            <a href="#home" class="nav-link active">Início</a>
+            <a href="#especialidades" class="nav-link">Especialidades</a>
+            <a href="#seguranca" class="nav-link">Qualidade & Segurança</a>
+            <a href="#catalogo" class="nav-link">Catálogo</a>
+            <a href="#sobre" class="nav-link">Sobre o Ateliê</a>
+            <a href="#depoimentos" class="nav-link">Avaliações</a>
+            <a href="https://wa.me/5562999999999?text=Ol%C3%A1%20Cris%2C%20gostaria%20de%20encomendar%20um%20amigurumi!" target="_blank" class="btn btn-primary nav-btn">
+                <i class="fa-brands fa-whatsapp"></i> Encomendar
+            </a>
+        </nav>
 
-<div class="main-content main-content-list container">
-  {% for recipe in recipes %}
-    {% include "recipes/partials/recipe.html" %}
-  {% endfor %}
-</div>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="container hero-container">
+        <div class="hero-content">
+            <div class="badge">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> 100% Feito à Mão em Crochê
+            </div>
+            <h1 class="hero-title">
+                Amigurumis afetivos que <span>acolhem, encantam</span> e marcam a infância.
+            </h1>
+            <p class="hero-subtitle">
+                Bichinhos em crochê, bonecas exclusivas e kits maternidade produzidos ponto a ponto com fios 100% algodão, enchimento antialérgico e olhos com trava de segurança para o seu bebê.
+            </p>
+            <div class="hero-actions">
+                <a href="https://wa.me/5562999999999?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20uma%20encomenda%20personalizada%20de%20amigurumi!" target="_blank" class="btn btn-primary btn-lg">
+                    <i class="fa-brands fa-whatsapp"></i> Fazer Pedido no WhatsApp
+                </a>
+                <a href="#especialidades" class="btn btn-outline btn-lg">
+                    Ver Especialidades <i class="fa-solid fa-arrow-down"></i>
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">+650</span>
+                    <span class="stat-label">Amigurumis Criados</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">5.0 ★</span>
+                    <span class="stat-label">Avaliação das Mães</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Fio Antialérgico</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=800&auto=format&fit=crop" alt="Ursinho Amigurumi em Crochê" class="hero-img">
+                <div class="floating-badge badge-top">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    <div>
+                        <strong>Seguro para Bebês</strong>
+                        <small>Olhos com Trava</small>
+                    </div>
+                </div>
+                <div class="floating-badge badge-bottom">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>
+                        <strong>Ponto a Ponto</strong>
+                        <small>Feito com amor e carinho</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Especialidades: Cards com fotos de amigurumis feitos à mão -->
+<section class="section" id="especialidades">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Criações Exclusivas</span>
+            <h2 class="section-title">Nossas Especialidades em Amigurumi</h2>
+            <p class="section-desc">Peças feitas à mão que combinam delicadeza, segurança e durabilidade para acompanhar cada momento especial.</p>
+        </div>
+
+        <div class="features-grid">
+            <!-- Card 1: Bichinhos & Safari -->
+            <div class="feature-card">
+                <div class="feature-img-box">
+                    <img src="https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=700&auto=format&fit=crop" alt="Bichinhos e Animais em Amigurumi">
+                </div>
+                <div class="feature-content">
+                    <span class="feature-icon"><i class="fa-solid fa-paw"></i></span>
+                    <h3>Bichinhos & Safári</h3>
+                    <p>Leões, ursinhos, elefantes, raposas e girafas feitos sob medida para a decoração do quartinho ou para ser o companheiro inseparável do seu filho.</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Linha Baby & Maternidade -->
+            <div class="feature-card">
+                <div class="feature-img-box">
+                    <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=700&auto=format&fit=crop" alt="Linha Baby e Maternidade">
+                </div>
+                <div class="feature-content">
+                    <span class="feature-icon"><i class="fa-solid fa-baby"></i></span>
+                    <h3>Linha Baby & Maternidade</h3>
+                    <p>Naninhas acolhedoras, chocalhos com argola de madeira natural antialérgica, prendedores de chupeta e móbiles para berço cheios de afeto.</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Bonecas Personalizadas -->
+            <div class="feature-card">
+                <div class="feature-img-box">
+                    <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=700&auto=format&fit=crop" alt="Bonecas Afetivas de Crochê">
+                </div>
+                <div class="feature-content">
+                    <span class="feature-icon"><i class="fa-solid fa-child-dress"></i></span>
+                    <h3>Bonecas Afetivas</h3>
+                    <p>Bonecas personalizadas com cores de cabelo, roupas e detalhes pensados para homenagear ou presentear aquela pessoa tão querida.</p>
+                </div>
+            </div>
+
+            <!-- Card 4: Lembrancinhas & Chaveiros -->
+            <div class="feature-card">
+                <div class="feature-img-box">
+                    <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?q=80&w=700&auto=format&fit=crop" alt="Lembrancinhas em Amigurumi">
+                </div>
+                <div class="feature-content">
+                    <span class="feature-icon"><i class="fa-solid fa-gift"></i></span>
+                    <h3>Lembrancinhas & Chaveiros</h3>
+                    <p>Mini amigurumis, chaveirinhos de coração e santinhas delicadas ideais para chá de bebê, nascimento, batizado e aniversários.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Segurança & Qualidade -->
+<section class="section security-section" id="seguranca">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Compromisso do Ateliê</span>
+            <h2 class="section-title">Segurança e Qualidade em Cada Ponto</h2>
+            <p class="section-desc">Sabemos que cada peça vai para os bracinhos de quem você mais ama. Por isso, a segurança é prioridade absoluta.</p>
+        </div>
+
+        <div class="security-grid">
+            <div class="security-item">
+                <div class="sec-icon"><i class="fa-solid fa-feather-pointed"></i></div>
+                <h4>Fio 100% Algodão</h4>
+                <p>Fios nobres e mercerizados que garantem toque macio na pele sensível e não formam bolinhas.</p>
+            </div>
+
+            <div class="security-item">
+                <div class="sec-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                <h4>Enchimento Hipoalergênico</h4>
+                <p>Fibra siliconada de altíssima qualidade, antiácaro, lavável e resistente à deformação.</p>
+            </div>
+
+            <div class="security-item">
+                <div class="sec-icon"><i class="fa-solid fa-lock"></i></div>
+                <h4>Travas de Segurança</h4>
+                <p>Olhos e focinhos com travas de pressão internas que impedem qualquer soltura acidental.</p>
+            </div>
+
+            <div class="security-item">
+                <div class="sec-icon"><i class="fa-solid fa-palette"></i></div>
+                <h4>Personalização Total</h4>
+                <p>Você escolhe as cores, tons e detalhes para combinar perfeitamente com o enxoval do bebê.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Catálogo com Filtros -->
+<section class="section menu-section" id="catalogo">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Pronta Entrega & Encomendas</span>
+            <h2 class="section-title">Catálogo de Amigurumis</h2>
+            <p class="section-desc">Clique nas categorias abaixo para filtrar as peças mais queridas do nosso ateliê.</p>
+        </div>
+
+        <!-- Filtros -->
+        <div class="menu-filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="bichinhos">Bichinhos</button>
+            <button class="filter-btn" data-filter="baby">Linha Baby</button>
+            <button class="filter-btn" data-filter="bonecas">Bonecas</button>
+            <button class="filter-btn" data-filter="lembrancinhas">Lembrancinhas</button>
+        </div>
+
+        <!-- Grid de Itens -->
+        <div class="menu-grid">
+            <!-- Item 1: Leãozinho -->
+            <div class="menu-card" data-category="bichinhos">
+                <div class="menu-card-img">
+                    <img src="https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=600&auto=format&fit=crop" alt="Leãozinho Amigurumi">
+                    <span class="menu-badge">Mais Pedido</span>
+                </div>
+                <div class="menu-card-body">
+                    <div class="menu-card-header">
+                        <h4>Leãozinho Safári da Cris</h4>
+                        <span class="menu-price">A partir de R$ 130</span>
+                    </div>
+                    <p>Aproximadamente 25cm. Juba fofinha em crochê, olhos com trava e acabamento artesanal impecável.</p>
+                    <a href="https://wa.me/5562999999999?text=Ol%C3%A1%20Cris%2C%20gostaria%20de%20encomendar%20o%20Le%C3%A3ozinho%20Saf%C3%A1ri!" target="_blank" class="menu-cta">
+                        Encomendar no WhatsApp <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 2: Coelhinha Charmosa -->
+            <div class="menu-card" data-category="bichinhos">
+                <div class="menu-card-img">
+                    <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=600&auto=format&fit=crop" alt="Coelhinha em Crochê">
+                </div>
+                <div class="menu-card-body">
+                    <div class="menu-card-header">
+                        <h4>Coelhinha Charmosa</h4>
+                        <span class="menu-price">A partir de R$ 120</span>
+                    </div>
+                    <p>Orelhas longas e caídas com vestidinho removível feito ponto a ponto em tons pastéis.</p>
+                    <a href="https://wa.me/5562999999999?text=Ol%C3%A1%20Cris%2C%20gostaria%20de%20encomendar%20a%20Coelhinha%20Charmosa!" target="_blank" class="menu-cta">
+                        Encomendar no WhatsApp <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 3: Naninha & Chocalho Baby -->
+            <div class="menu-card" data-category="baby">
+                <div class="menu-card-img">
+                    <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=600&auto=format&fit=crop" alt="Kit Naninha e Chocalho">
+                    <span class="menu-badge">Maternidade</span>
+                </div>
+                <div class="menu-card-body">
+                    <div class="menu-card-header">
+                        <h4>Kit Maternidade Ursinho</h4>
+                        <span class="menu-price">R$ 150</span>
+                    </div>
+                    <p>Inclui 1 naninha com paninho 100% algodão e 1 chocalho com argola de madeira tratada.</p>
+                    <a href="https://wa.me/5562999999999?text=Ol%C3%A1%20Cris%2C%20gostaria%20de%20encomendar%20o%20Kit%20Maternidade!" target="_blank" class="menu-cta">
+                        Encomendar no WhatsApp <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 4: Boneca Afetiva -->
+            <div class="menu-card" data-category="bonecas">
+                <div class="menu-card-img">
+                    <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=600&auto=format&fit=crop" alt="Boneca Afetiva em Crochê">
+                </div>
+                <div class="menu-card-body">
+                    <div class="menu-card-header">
+                        <h4>Boneca Laura Personalizada</h4>
+                        <span class="menu-price">A partir de R$ 160</span>
+                    </div>
+                    <p>30cm de pura fofura. Cabelinhos com trancinhas, roupinha customizável e sapatos delicados.</p>
+                    <a href="https://wa.me/5562999999999?text=Ol%C3%A1%20Cris%2C%20gostaria%20de%20encomendar%20a%20Boneca%20Laura!" target="_blank" class="menu-cta">
+                        Encomendar no WhatsApp <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Item 5: Lembrancinhas Chaveiro -->
+            <div class="menu-card" data-category="lembrancinhas">
+                <div class="menu-card-img">
+                    <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?q=80&w=600&auto=format&fit=crop" alt="Chaveirinhos de Amigurumi">
+                    <span class="menu-badge">Kit Maternidade</span>
+                </div>
+                <div class="menu-card-body">
+                    <div class="menu-card-header">
+                        <h4>Lembrancinhas Chaveiro (Kit 15un)</h4>
+                        <span class="menu-price">R$ 180</span>
+                    </div>
+                    <p>Coraçõezinhos ou mini ursinhos com argola metálica e tag com o nome do bebê.</p>
+                    <a href="https://wa.me/5562999999999?text=Ol%C3%A1%20Cris%2C%20gostaria%20de%20encomendar%20as%20Lembrancinhas!" target="_blank" class="menu-cta">
+                        Encomendar no WhatsApp <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sobre a Cris -->
+<section class="section about-section" id="sobre">
+    <div class="container about-container">
+        <div class="about-visual">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" alt="Artesã Fazendo Crochê" class="about-img">
+            <div class="about-experience">
+                <span class="exp-years">+5</span>
+                <span class="exp-text">Anos criando memórias de crochê</span>
+            </div>
+        </div>
+
+        <div class="about-content">
+            <span class="section-tag">A Nossa História</span>
+            <h2 class="section-title">O amor pelo artesanato transformado em amigurumis vivos</h2>
+            <p>
+                O <strong>Ateliê da Cris</strong> nasceu de um encanto simples: como um novelo de linha e uma agulha de crochê podem se transformar em um bichinho cheio de expressão e carinho.
+            </p>
+            <p>
+                Cada amigurumi é feito manualmente, ponto por ponto, sem esteiras nem produção em massa. É um processo artesanal calmo e dedicado, onde cada detalhe — do brilho dos olhinhos até a costura final — é feito para encantar quem recebe.
+            </p>
+
+            <div class="about-pillars">
+                <div class="pillar">
+                    <i class="fa-solid fa-heart"></i>
+                    <div>
+                        <h4>Peças Únicas e com Alma</h4>
+                        <p>Nenhum amigurumi é idêntico a outro; cada peça carrega uma história e uma identidade própria.</p>
+                    </div>
+                </div>
+                <div class="pillar">
+                    <i class="fa-solid fa-gift"></i>
+                    <div>
+                        <h4>Embalagem Pronta para Presente</h4>
+                        <p>Enviamos cada encomenda com caixinha caprichada, laço e cheirinho de bebê.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Depoimentos -->
+<section class="section testimonials-section" id="depoimentos">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Mães & Famílias Felizes</span>
+            <h2 class="section-title">O que dizem os clientes do Ateliê</h2>
+            <p class="section-desc">O carinho de quem recebeu um amigurumi do Ateliê da Cris.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "Encomendei o leãozinho para o quartinho do meu filho e fiquei apaixonada! Os pontos são tão perfeitos e firmes, o cheirinho delicioso que veio na embalagem... Superou todas as expectativas!"
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Fernanda M.">
+                    <div>
+                        <h5>Fernanda Medeiros</h5>
+                        <small>Mãe do Theo (Goiânia, GO)</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "A boneca personalizada que a Cris fez para a minha sobrinha foi a coisa mais linda da festa. A Cris conseguiu reproduzir a cor do cabelinho e o vestidinho com muita perfeição. Atendimento nota 10!"
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" alt="Beatriz S.">
+                    <div>
+                        <h5>Beatriz Santos</h5>
+                        <small>Dinda da Alice (Aparecida de Goiânia)</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "O kit de naninha com chocalho virou o companheiro inseparável do Gael. A segurança das peças me deixa super tranquila, pois o material é macio e não tem nada que solte. Recomendo de olhos fechados!"
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="Rodrigo P.">
+                    <div>
+                        <h5>Rodrigo Paiva</h5>
+                        <small>Pai do Gael</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Final -->
+<section class="cta-section" id="contato">
+    <div class="container cta-container">
+        <div class="cta-content">
+            <h2>Quer um amigurumi exclusivo feito para você?</h2>
+            <p>Personalize cores, modelos e tamanhos. Fale diretamente com a Cris pelo WhatsApp e consulte a agenda de encomendas!</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/5562999999999?text=Ol%C3%A1%20Cris%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20amigurumi!" target="_blank" class="btn btn-whatsapp btn-lg">
+                    <i class="fa-brands fa-whatsapp"></i> Falar com a Cris no WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer-container">
+        <div class="footer-col">
+            <a href="#home" class="brand footer-brand">
+                <span class="brand-icon"><i class="fa-solid fa-heart"></i></span>
+                <span class="brand-text">Ateliê da Cris</span>
+            </a>
+            <p class="footer-desc">
+                Amigurumis e peças afetivas em crochê feitas 100% à mão com amor, segurança e materiais hipoalergênicos.
+            </p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://wa.me/5562999999999" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Navegação</h4>
+            <ul class="footer-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#especialidades">Especialidades</a></li>
+                <li><a href="#seguranca">Segurança & Qualidade</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Atendimento</h4>
+            <ul class="footer-info">
+                <li><i class="fa-solid fa-clock"></i> Segunda a Sábado: 09h às 19h</li>
+                <li><i class="fa-solid fa-gift"></i> Encomendas para todo o Brasil</li>
+                <li><i class="fa-solid fa-location-dot"></i> Aparecida de Goiânia, Goiás</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container footer-bottom-container">
+            <p>&copy; 2026 Ateliê da Cris — Amigurumis Artesanais. Todos os direitos reservados.</p>
+            <p>Desenvolvido com carinho por <a href="https://github.com/Edmundocabocolino" target="_blank"><strong>Edmundo Cabocolino</strong></a> 🚀</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Botão Flutuante do WhatsApp -->
+<a href="https://wa.me/5562999999999?text=Ol%C3%A1%20Cris%2C%20gostaria%20de%20encomendar%20um%20amigurumi!" class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- Scripts JS Interativos Inline -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Menu Mobile Toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    }
+
+    // 2. Filtro do Catálogo
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const menuCards = document.querySelectorAll('.menu-card');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            menuCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filterValue === 'all' || category === filterValue) {
+                    card.style.display = 'flex';
+                    card.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // 3. Efeito na Navbar ao Rolar
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.style.boxShadow = '0 10px 30px rgba(56, 41, 44, 0.08)';
+        } else {
+            navbar.style.boxShadow = 'none';
+        }
+    });
+});
+</script>
 {% endblock content %}
